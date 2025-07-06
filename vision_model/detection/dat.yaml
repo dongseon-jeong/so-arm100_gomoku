@@ -1,0 +1,8 @@
+path: D:/making/so-arm100_gomoku/vision_model/detection # dataset root dir
+train: train.txt # train images (relative to 'path') 39384 images
+val: valid.txt # val images (relative to 'path') 15062 images
+# test: Argoverse-1.1/images/test/ # test images (optional) https://eval.ai/web/challenges/challenge-page/800/overview
+
+# Classes
+names:
+  0: board

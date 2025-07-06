@@ -3,13 +3,13 @@ from gym import GomokuSelfPlayEnv
 
 
 board_size = 13
-max_turns = 40
+max_turns = 50
 
 
 # 추론 환경
-main_model = PPO.load("gomoku_ppo_selfplay_final.zip")
+main_model = PPO.load("rl_model/gomoku_ppo_selfplay_final.zip")
 eval_env = GomokuSelfPlayEnv(board_size=board_size, max_turns = max_turns)
-updated_opponent_model = PPO.load("temp_main_model_ppo.zip")
+updated_opponent_model = PPO.load("rl_model/temp_main_model_ppo.zip")
 eval_env.set_opponent_model(updated_opponent_model)
 
 obs, info = eval_env.reset()

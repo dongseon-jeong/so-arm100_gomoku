@@ -1,0 +1,3 @@
+./vision_model/detection/detection_data/
+./vision_model/detection/yolo11n.pt
+./vision_model/detection/runs/detection/train9/weights/

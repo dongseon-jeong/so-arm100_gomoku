@@ -125,7 +125,7 @@ class GomokuSelfPlayEnv(gym.Env):
                 }
 
             if self.current_turn >= self.max_turns:
-                return self._obs(), -0.5, True, False, {
+                return self._obs(), -0.5 , True, False, {
                     "reason": "max turn reached",
                     "winner": "draw"
                 }
@@ -148,7 +148,7 @@ class GomokuSelfPlayEnv(gym.Env):
 
     def _evaluate_board(self, player):
         chain, check_win = self._max_consecutive(player)
-        reward = {2: 0.1, 3: 0.3, 4: 0.7, 5: 1.0}.get(chain, 0.0)
+        reward = {2: 0.1, 3: 0.3, 4: 0.7, 5: 100.0}.get(chain, 0.0)
         return reward, check_win
 
     def _max_consecutive(self, player):

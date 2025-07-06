@@ -14,11 +14,11 @@ if not hasattr(gym, "__version__"):
 
 
 
-initial_opponent_t = 100000
-total_timesteps = int(1000000)
-update_interval = int(100000)
+initial_opponent_t = 1e+3
+total_timesteps = int(3e+7)
+update_interval = int(1e+3)
 board_size = 13
-max_turns = 40
+max_turns = 30
 
 
 class WinnerLoggingCallback(BaseCallback):
@@ -27,7 +27,7 @@ class WinnerLoggingCallback(BaseCallback):
         self.writer = None
 
     def _on_training_start(self):
-        self.writer = SummaryWriter(log_dir="./tensorboard/")
+        self.writer = SummaryWriter(log_dir="./rl_model/tensorboard/")
 
     def _on_step(self) -> bool:
         infos = self.locals.get("infos", [])
@@ -54,6 +54,7 @@ initial_opponent_model = PPO(
         share_features_extractor=True
     )
 )
+
 initial_opponent_model.learn(total_timesteps=initial_opponent_t)
 
 # 주인공 학습 환경 생성 (opponent 포함)
@@ -71,8 +72,8 @@ main_model = PPO(
     vec_env,
     learning_rate=1e-4,
     n_steps=50,
-    batch_size=64,
-    n_epochs=10,
+    batch_size=640,
+    n_epochs=50,
     gamma=0.99,
     gae_lambda=0.95,
     clip_range=0.2,
@@ -80,9 +81,9 @@ main_model = PPO(
     vf_coef=0.5,
     max_grad_norm=0.5,
     verbose=1,
-    tensorboard_log="./tensorboard/",
+    tensorboard_log="./rl_model/tensorboard/",
     policy_kwargs=dict(
-        net_arch=[dict(pi=[64, 64], vf=[64, 64])],
+        net_arch=[dict(pi=[64, 64, 128], vf=[64, 64, 128])],
         activation_fn=nn.ReLU,
         share_features_extractor=True
     )
@@ -102,9 +103,9 @@ for step in range(0, total_timesteps, update_interval):
 
     # 🆕 opponent 모델 업데이트
     print("🔁 Updating opponent model...")
-    main_model.save("temp_main_model_ppo.zip")
+    main_model.save("./rl_model/temp_main_model_ppo.zip")
     print('saved')
-    updated_opponent_model = PPO.load("temp_main_model_ppo.zip")
+    updated_opponent_model = PPO.load("./rl_model/temp_main_model_ppo.zip")
 
 
     for env_idx in range(vec_env.num_envs):
@@ -112,5 +113,5 @@ for step in range(0, total_timesteps, update_interval):
         raw_env.set_opponent_model(updated_opponent_model)
 
 print("✅ 학습 완료")
-main_model.save("gomoku_ppo_selfplay_final")
+main_model.save("./rl_model/gomoku_ppo_selfplay_final")
 
