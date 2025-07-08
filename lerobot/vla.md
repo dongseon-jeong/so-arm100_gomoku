@@ -53,15 +53,23 @@ https://huggingface.co/spaces/lerobot/visualize_dataset?path=%2Fdongseon%2Fso100
 
 
 #### 모델 학습
-- act https://arxiv.org/pdf/2304.13705
+- act https://arxiv.org/pdf/2304.13705  
 	- flow matching 액션 청크
-- pi0 https://arxiv.org/html/2410.24164v1
-	- 
-- diffusion_policy https://arxiv.org/pdf/2303.04137
-	- 
+- pi0 
+  - https://arxiv.org/html/2410.24164v1  
+- diffusion_policy
+  - https://arxiv.org/pdf/2303.04137  
 - openVLA https://arxiv.org/pdf/2406.09246  rf-2 https://arxiv.org/pdf/2307.15818
 	- 인터넷 데이터로 학습한 llm모델을 베이스로 두고 비전모델은 프로젝션 레이어로 연결
 	- 액션 토큰 아웃
-- smolvla
+- smolvla > 최종 모델
 	- 450m cpu 구동도 가능
 	- llm + act
+
+데이터셋 100개 학습 후 추론  
+"Grasp a White stone and put it in the board on position (0,0)."
+
+[![이미지 텍스트](https://img.youtube.com/vi/cgwXwE9i1xM/0.jpg)](https://www.youtube.com/watch?v=cgwXwE9i1xM)
+
+
+ 
