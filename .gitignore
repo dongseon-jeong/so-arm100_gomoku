@@ -3,4 +3,4 @@ vision_model/detection/runs/detect/train/weights/
 vision_model/detection/yolo11n.pt
 vision_model/classfication/classification_data/
 vision_model/classfication/classification_data2/
-vision_model/classfication/~$labeling2.xltm
+vision_model/classification/resnet18-models/
