@@ -16,7 +16,7 @@ class BasicBlock(tf.keras.layers.Layer):
             padding='same', use_bias=False)
         self.bn2 = tf.keras.layers.BatchNormalization()
 
-        # ⚠️ downsample을 조건부로 나중에 초기화
+        # downsample을 조건부로 나중에 초기화
         self.downsample = None
 
     def build(self, input_shape):

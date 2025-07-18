@@ -65,6 +65,7 @@ https://huggingface.co/spaces/lerobot/visualize_dataset?path=%2Fdongseon%2Fso100
 - smolvla > 최종 모델
 	- 450m cpu 구동도 가능
 	- llm + act
+	- 비동기 추론 최고!
 
 데이터셋 100개 학습 후 추론  
 "Grasp a White stone and put it in the board on position (0,0)."
