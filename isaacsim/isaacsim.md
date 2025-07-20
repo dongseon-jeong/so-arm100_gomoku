@@ -30,8 +30,10 @@ isaacsim
 
 
 
-바닥&바둑판 : 마야나 블랜더로 할 예정, 텍스처는 실사 사용
-조명&배경 : 랜더링하면서 조명 배치 예정
+바닥&바둑판 배치하여 레코딩하려고 함 (참고 https://www.youtube.com/@robotmania8896)
+![[isaac_action_test.jpg]](../image/isaac_action_test.jpg)
+
+
 
 
 ## 환경 생성
